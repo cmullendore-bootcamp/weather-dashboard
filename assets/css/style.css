@@ -18,3 +18,37 @@ button {
     color: #FFFFFF;
     background-color: #5f9ea0;
 }
+
+/* Note that the order of the next two selectors is INTENTIONAL */
+
+*[id*="for"], div.col p {
+    color: #ffffff;
+}
+
+*[id*="weather-"], div.headline p  {
+    color: #000000;
+}
+
+div.row div.col {
+    background-color: #2f4f4f;
+    margin: 5px;
+}
+
+#weather-current-uv {
+    border-radius: 5px;
+}
+
+#weather-current-uv.good {
+    color: #ffffff;
+    background-color: #008000;
+}
+
+#weather-current-uv.warning {
+    color: #000000;
+    background-color: #ffff00;
+}
+
+#weather-current-uv.danger {
+    color: #ffffff;
+    background-color: #ff0000;
+}

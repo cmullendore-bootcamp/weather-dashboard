@@ -16,7 +16,7 @@
     <!-- Main content container -->
     <main>
         <!-- Left Column -->
-        <div class="m-3 p-3">
+        <div class="container col-4 m-3 p-3">
             <!-- Search Box -->
             <div class="row">
                 <label for="search-city" class="m-2 text-center">
@@ -28,58 +28,56 @@
             <hr />
             <!-- Search History -->
             <div id="search-history" class="row">
-                <button class="button m-2 history-btn" value="history1">History 1</button>
-                <button class="button m-2 history-btn" value="history2">History 2</button>
-                <button class="button m-2 history-btn" value="history3">History 3</button>
             </div>
         </div>
         <!-- Right Column -->
         <div class="container m-3 p-3">
             <!-- Current Conditions Panel -->
-            <div class="row border border-primary">
-                <h3 id="weather-current">City <span><img id="weather-icon" /> </span></h3>
-                <p>Temp: <span id="weather-current-temp">#temp</span> </p>
-                <p>Wind: <span id="weather-current-wind">#wind</span> </p>
-                <p>Humidity: <span id="weather-current-humidity">#humid</span> </p>
-                <p>UV Index: <span id="weather-current-uv">#uv</span> </p>
+            <div class="row border border-primary headline">
+                <h3 id="weather-city">Please provide a city to the left</h3>
+                <div><img id="weather-icon" /> </div>
+                <p>Temp: <span id="weather-current-temp"></span> </p>
+                <p>Wind: <span id="weather-current-wind"></span> </p>
+                <p>Humidity: <span id="weather-current-humidity"></span> </p>
+                <p>UV Index: <span id="weather-current-uv" class="px-2 py-1"></span> </p>
             </div>
             <h3>5 Day Forecast</h3>
             <div class="row flex">
                 <!-- Container for horizontal 5 days ahead -->
                 <div class="col">
-                    <h5 id="for0Date">Date</h5>
+                    <h5 id="for0Date"></h5>
                     <img id="for0Img">
-                    <p>Temp: <span id="for0Temp">65</span></p>
-                    <p>Wind: <span id="for0Wind">65</span></p>
-                    <p>Humidity: <span id="for0Hum">65</span></p>
+                    <p>Temp: <span id="for0Temp"></span></p>
+                    <p>Wind: <span id="for0Wind"></span></p>
+                    <p>Humidity: <span id="for0Hum"></span></p>
                 </div>
                 <div class="col">
-                    <h5 id="for1Date">Date</h5>
+                    <h5 id="for1Date"></h5>
                     <img id="for1Img">
-                    <p>Temp: <span id="for1Temp">65</span></p>
-                    <p>Wind: <span id="for1Wind">65</span></p>
-                    <p>Humidity: <span id="for1Hum">65</span></p>
+                    <p>Temp: <span id="for1Temp"></span></p>
+                    <p>Wind: <span id="for1Wind"></span></p>
+                    <p>Humidity: <span id="for1Hum"></span></p>
                 </div>
                 <div class="col">
-                    <h5 id="for2Date">Date</h5>
+                    <h5 id="for2Date"></h5>
                     <img id="for2Img">
-                    <p>Temp: <span id="for2Temp">65</span></p>
-                    <p>Wind: <span id="for2Wind">65</span></p>
-                    <p>Humidity: <span id="for2Hum">65</span></p>
+                    <p>Temp: <span id="for2Temp"></span></p>
+                    <p>Wind: <span id="for2Wind"></span></p>
+                    <p>Humidity: <span id="for2Hum"></span></p>
                 </div>
                 <div class="col">
-                    <h5 id="for3Date">Date</h5>
+                    <h5 id="for3Date"></h5>
                     <img id="for3Img">
-                    <p>Temp: <span id="for3Temp">65</span></p>
-                    <p>Wind: <span id="for3Wind">65</span></p>
-                    <p>Humidity: <span id="for3Hum">65</span></p>
+                    <p>Temp: <span id="for3Temp"></span></p>
+                    <p>Wind: <span id="for3Wind"></span></p>
+                    <p>Humidity: <span id="for3Hum"></span></p>
                 </div>
                 <div class="col">
-                    <h5 id="for4Date">Date</h5>
+                    <h5 id="for4Date"></h5>
                     <img id="for4Img">
-                    <p>Temp: <span id="for4Temp">65</span></p>
-                    <p>Wind: <span id="for4Wind">65</span></p>
-                    <p>Humidity: <span id="for4Hum">65</span></p>
+                    <p>Temp: <span id="for4Temp"></span></p>
+                    <p>Wind: <span id="for4Wind"></span></p>
+                    <p>Humidity: <span id="for4Hum"></span></p>
                 </div>
             </div>
         </div>

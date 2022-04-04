@@ -12,13 +12,13 @@ function LoadWeather(query) {
             response.json()
                 .then(function(data) {
                     ProcessHistory(data.name, data.coord.lat, data.coord.lon);
-                    LoadForecast(data.coord.lat, data.coord.lon);
+                    LoadForecast(data.name, data.coord.lat, data.coord.lon);
                 });
         });
 }
 
 
-function LoadForecast(lat, lon) {
+function LoadForecast(city, lat, lon) {
     var forecastApiUrl =  `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly&appid=4e3d18816754402569ac77dc78b5f775`
     
     fetch(forecastApiUrl)
@@ -28,19 +28,29 @@ function LoadForecast(lat, lon) {
             }
             response.json()
                 .then(function(data) {
-                    ProcessForecast(data);
+                    ProcessForecast(city, data);
                 });
         });
 }
 
-function ProcessForecast(forecastWeather) {
-    console.log(forecastWeather);
+function ProcessForecast(city, forecastWeather) {
+    document.getElementById("weather-city").textContent = city;
     document.getElementById("weather-icon").setAttribute("src", `http://openweathermap.org/img/wn/${forecastWeather.current.weather[0].icon}@2x.png`)
     document.getElementById("weather-current-temp").textContent = forecastWeather.current.temp;
     document.getElementById("weather-current-wind").textContent = forecastWeather.current.wind_speed;
     document.getElementById("weather-current-humidity").textContent = forecastWeather.current.humidity;
-    document.getElementById("weather-current-uv").textContent = forecastWeather.current.uvi;
+    var uvIndex = $("#weather-current-uv");
+    uvIndex.text(forecastWeather.current.uvi);
+    if (forecastWeather.current.uvi <= 2) {
+        uvIndex.addClass("good");
+        //uvIndex("bg-success");
+    } else if (forecastWeather.current.uvi <= 5) {
+        uvIndex.addClass("warning");
+    } else {
+        uvIndex.addClass("danger");
+    }
 
+    uvIndex
     for (var i = 0; i < 5; i++) {
         var day = forecastWeather.daily[i];
         document.getElementById(`for${i}Date`).textContent = moment(day.dt * 1000).format("MM/DD/YYYY");
@@ -94,5 +104,7 @@ searchBtn.addEventListener("click", function(event) {
 $("#search-history").on("click", "button", function(event) {
     $("#search-city").val(event.target.innerText);
     ProcessHistory(event.target.innerText, event.target.dataset.lat, event.target.dataset.lon);
-    LoadForecast(event.target.dataset.lat, event.target.dataset.lon);
+    LoadForecast(event.target.innerText, event.target.dataset.lat, event.target.dataset.lon);
 });
+
+ProcessHistory();
