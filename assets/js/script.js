@@ -19,7 +19,7 @@ function LoadWeather(query) {
 
 
 function LoadForecast(city, lat, lon) {
-    var forecastApiUrl =  `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly&appid=4e3d18816754402569ac77dc78b5f775`
+    var forecastApiUrl =  `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly&units=imperial&appid=4e3d18816754402569ac77dc78b5f775`
     
     fetch(forecastApiUrl)
         .then(function(response) {
@@ -50,7 +50,6 @@ function ProcessForecast(city, forecastWeather) {
         uvIndex.addClass("danger");
     }
 
-    uvIndex
     for (var i = 0; i < 5; i++) {
         var day = forecastWeather.daily[i];
         document.getElementById(`for${i}Date`).textContent = moment(day.dt * 1000).format("MM/DD/YYYY");
@@ -81,7 +80,7 @@ function ProcessHistory(name, lat, lon) {
 
     var historyButtons = document.getElementById("search-history");
     historyButtons.innerHTML = "";
-    for (var i = 0; i < history.length; i++) {
+    for (var i = history.length-1; i >= 0; i--) {
         var btn = document.createElement("button");
         btn.setAttribute("class", "button m-2 history-btn")
         btn.setAttribute("data-lat", history[i].lat);
